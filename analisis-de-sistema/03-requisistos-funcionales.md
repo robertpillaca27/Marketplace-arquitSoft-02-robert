@@ -1,4 +1,3 @@
-Markdown
 | ID | Requisito funcional |
 | :--- | :--- |
 | **RF01** | El sistema debe permitir buscar productos mediante criterios de búsqueda. |
