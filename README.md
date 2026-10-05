@@ -2,7 +2,7 @@
  ## nombre
  Robert Pillaca Choquehuanca
 ## Descripción
- Marketplace académico de productos para mascotas. 
+ Marketplace académico de productos para mascotas 
  ## Caso de estudio
  GoPet como referencia funcional.
  ## Curso
