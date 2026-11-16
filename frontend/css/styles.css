@@ -1,0 +1,203 @@
+
+/* ==============================
+   1. CONFIGURACIÓN GENERAL
+================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f7f3;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* ==============================
+   2. ENCABEZADO
+================================= */
+
+header {
+    background-color: #315c45;
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+}
+
+header h1 {
+    font-size: 36px;
+    margin-bottom: 5px;
+}
+
+header p {
+    font-size: 15px;
+}
+
+/* ==============================
+   3. NAVEGACIÓN
+================================= */
+
+nav {
+    background-color: #244735;
+    display: flex;
+    justify-content: center;
+    gap: 35px;
+    padding: 15px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #f4d58d;
+}
+
+/* ==============================
+   4. CONTENIDO PRINCIPAL
+================================= */
+
+main {
+    max-width: 1100px;
+    margin: 35px auto;
+    padding: 0 20px;
+}
+
+section {
+    margin-bottom: 45px;
+}
+
+section h2 {
+    color: #315c45;
+    margin-bottom: 20px;
+    font-size: 25px;
+}
+
+/* ==============================
+   5. CATÁLOGO DE PRODUCTOS
+================================= */
+
+#product-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.product-card {
+    background-color: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+.product-card h3 {
+    color: #315c45;
+    margin-bottom: 10px;
+}
+
+.product-card p {
+    margin-bottom: 8px;
+}
+
+/* ==============================
+   6. BOTONES
+================================= */
+
+button {
+    background-color: #315c45;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 7px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #244735;
+}
+
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* ==============================
+   7. FORMULARIO
+================================= */
+
+#product-form {
+    margin-top: 20px;
+}
+
+.product-form-container {
+    background-color: white;
+    padding: 25px;
+    border-radius: 12px;
+    max-width: 600px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+.product-form-container label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.product-form-container input,
+.product-form-container textarea,
+.product-form-container select {
+    width: 100%;
+    padding: 11px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.form-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.btn-cancel {
+    background-color: #777;
+}
+
+/* ==============================
+   8. PIE DE PÁGINA
+================================= */
+
+footer {
+    background-color: #244735;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 50px;
+}
+
+/* ==============================
+   9. DISEÑO RESPONSIVE
+================================= */
+
+@media (max-width: 600px) {
+    nav {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    header h1 {
+        font-size: 29px;
+    }
+
+    main {
+        margin-top: 25px;
+    }
+}

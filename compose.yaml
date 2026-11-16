@@ -1,0 +1,56 @@
+
+services:
+
+  # Servicio de base de datos
+  db:
+    image: postgres:16-alpine
+    container_name: ayapet-db
+    restart: unless-stopped
+
+    environment:
+      POSTGRES_USER: ayapet_user
+      POSTGRES_PASSWORD: ayapet_local_2026
+      POSTGRES_DB: ayapet_db
+
+    ports:
+      - "5433:5432"
+
+    volumes:
+      # Persistencia de los datos
+      - ayapet_data:/var/lib/postgresql/data
+
+      # Inicialización de la base de datos
+      - ./backend/database/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+      - ./backend/database/seed.sql:/docker-entrypoint-initdb.d/02-seed.sql:ro
+
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ayapet_user -d ayapet_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  # Servicio de la API
+  api:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+
+    container_name: ayapet-api
+    restart: unless-stopped
+
+    env_file:
+      - ./backend/.env.docker
+
+    environment:
+      PORT: 3000
+
+    ports:
+      - "3000:3000"
+
+    depends_on:
+      db:
+        condition: service_healthy
+
+# Volumen persistente
+volumes:
+  ayapet_data:

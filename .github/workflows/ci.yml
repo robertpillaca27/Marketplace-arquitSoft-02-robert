@@ -1,0 +1,34 @@
+
+name: CI - ayaPet
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test-and-build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar el código
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: backend/package-lock.json
+
+      - name: Instalar dependencias
+        working-directory: backend
+        run: npm ci
+
+      - name: Ejecutar pruebas automatizadas
+        working-directory: backend
+        run: npm test
+
+      - name: Construir imagen Docker
+        run: docker build -t ayapet-api:${{ github.sha }} ./backend
